@@ -69,7 +69,7 @@ export function CTA() {
   }
 
   return (
-    <section className='mx-auto max-w-7xl px-6 py-20'>
+    <section id='contact' className='mx-auto max-w-7xl px-6 py-20'>
       <div
         onMouseMove={handleMouseMove}
         className='relative rounded-[32px] bg-gradient-to-br from-primary via-blue-700 to-primary px-8 py-16 text-white shadow-2xl overflow-hidden cursor-default'
