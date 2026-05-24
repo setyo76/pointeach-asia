@@ -74,7 +74,7 @@ export function Features() {
           <motion.article
             key={index}
             variants={cardVariants}
-            whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            whileHover={{ y: -8, transition: { duration: 0.2 as const } }}
             className='rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:shadow-xl group'
           >
             <h3 className='text-xl font-semibold text-slate-900 group-hover:text-primary transition-colors'>

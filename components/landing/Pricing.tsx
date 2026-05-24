@@ -151,7 +151,7 @@ export function Pricing() {
               boxShadow: plan.popular
                 ? '0 24px 60px -10px rgba(99, 102, 241, 0.35), 0 8px 24px -6px rgba(99, 102, 241, 0.2)'
                 : '0 20px 50px -10px rgba(15, 23, 42, 0.18), 0 6px 20px -6px rgba(15, 23, 42, 0.1)',
-              transition: { duration: 0.25, ease: 'easeOut' },
+              transition: { duration: 0.25, ease: 'easeOut' as const},
             }}
             className={`rounded-3xl border bg-white p-8 shadow-sm cursor-default transition-colors ${
               plan.popular
