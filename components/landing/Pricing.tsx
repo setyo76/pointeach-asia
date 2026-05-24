@@ -87,7 +87,7 @@ function WaveButton({
             initial={{ width: 0, height: 0, opacity: 0.8 }}
             animate={{ width: 320, height: 320, opacity: 0 }}
             exit={{}}
-            transition={{ duration: 0.65, ease: 'easeOut' }}
+            transition={{ duration: 0.65, ease: 'easeOut' as const }}
           />
         ))}
       </AnimatePresence>
@@ -103,7 +103,7 @@ function WaveButton({
           }}
           initial={{ backgroundPosition: '200% 0' }}
           whileHover={{ backgroundPosition: '-200% 0' }}
-          transition={{ duration: 0.7, ease: 'easeInOut' }}
+          transition={{ duration: 0.7, ease: 'easeInOut' as const }}
         />
       )}
 
@@ -112,12 +112,13 @@ function WaveButton({
   );
 }
 
+// PERBAIKAN UTAMA: Ditambahkan 'as const' di akhir agar [0.22, 1, 0.36, 1] terbaca sebagai tuple, bukan number[]
 const cardVariants = {
   initial: { opacity: 0, y: 60 },
   inView: (index: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: index * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: index * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
@@ -128,7 +129,7 @@ export function Pricing() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as const }}
         className="mb-14 text-center"
       >
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">HARGA</p>
@@ -151,8 +152,8 @@ export function Pricing() {
               boxShadow: plan.popular
                 ? '0 24px 60px -10px rgba(99, 102, 241, 0.35), 0 8px 24px -6px rgba(99, 102, 241, 0.2)'
                 : '0 20px 50px -10px rgba(15, 23, 42, 0.18), 0 6px 20px -6px rgba(15, 23, 42, 0.1)',
-              transition: { duration: 0.25, ease: 'easeOut' as const},
-            }}
+              transition: { duration: 0.25, ease: 'easeOut' as const },
+            } as const}
             className={`rounded-3xl border bg-white p-8 shadow-sm cursor-default transition-colors ${
               plan.popular
                 ? 'border-primary relative md:-mt-3 md:mb-3'

@@ -37,12 +37,13 @@ const containerVariants = {
   },
 };
 
+// PERBAIKAN 1: Menambahkan 'as const' untuk mengunci nilai string tipe easing
 const cardVariants = {
   hidden: { opacity: 0, y: 60 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
+    transition: { duration: 0.5, ease: "easeOut" as const }
   },
 };
 
@@ -74,7 +75,8 @@ export function Features() {
           <motion.article
             key={index}
             variants={cardVariants}
-            whileHover={{ y: -8, transition: { duration: 0.2 as const } }}
+            // PERBAIKAN 2: Memberikan 'as const' pada penulisan inline whileHover agar semakin aman
+            whileHover={{ y: -8, transition: { duration: 0.2 } as const }}
             className='rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:shadow-xl group'
           >
             <h3 className='text-xl font-semibold text-slate-900 group-hover:text-primary transition-colors'>

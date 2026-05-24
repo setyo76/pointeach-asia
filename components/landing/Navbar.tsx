@@ -39,7 +39,8 @@ function Shards({ x, y, active }: { x: number; y: number; active: boolean }) {
               initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
               animate={{ opacity: 0, x: tx, y: ty, scale: 0 }}
               exit={{}}
-              transition={{ duration: 0.45, delay: s.delay, ease: 'easeOut' }}
+              // PERBAIKAN 1: Kunci tipe 'easeOut'
+              transition={{ duration: 0.45, delay: s.delay, ease: 'easeOut' as const }}
             />
           );
         })}
@@ -113,16 +114,17 @@ export function Navbar() {
   // Jarak terbang (dari origin ke logo)
   const travelX = logoHit.x - shotOrigin.x;
 
+  // PERBAIKAN 2: Gunakan 'as const' pada object variants agar string easing dikunci ketat
   const menuVariants = {
     closed: {
       opacity: 0,
       height: 0,
-      transition: { duration: 0.3, ease: 'easeInOut' },
+      transition: { duration: 0.3, ease: 'easeInOut' as const },
     },
     open: {
       opacity: 1,
       height: 'auto',
-      transition: { duration: 0.4, ease: 'easeInOut' },
+      transition: { duration: 0.4, ease: 'easeInOut' as const },
     },
   };
 
@@ -144,20 +146,19 @@ export function Navbar() {
                 top: shotOrigin.y,
                 left: shotOrigin.x,
                 translateY: '-50%',
-                // Pill shape dengan gradient: solid di kiri, transparan di kanan (ekor)
                 borderRadius: '9999px',
                 background:
                   'linear-gradient(to left, rgba(99,102,241,0) 0%, rgba(99,102,241,0.5) 40%, rgba(99,102,241,1) 100%)',
               }}
               initial={{
-                width: shotOrigin.width, // lebar penuh button
-                height: shotOrigin.height, // tinggi penuh button
+                width: shotOrigin.width,
+                height: shotOrigin.height,
                 x: 0,
                 opacity: 1,
                 scaleY: 1,
               }}
               animate={{
-                x: travelX - shotOrigin.width, // ujung kiri peluru menyentuh logo
+                x: travelX - shotOrigin.width,
                 width: [
                   shotOrigin.width,
                   shotOrigin.width * 0.6,
@@ -173,9 +174,10 @@ export function Navbar() {
                 opacity: [1, 0.95, 0.85, 0.7],
               }}
               exit={{ opacity: 0 }}
+              // PERBAIKAN 3: Array cubic-bezier dikunci menggunakan 'as const' agar dibaca sebagai Tuple berukuran 4, bukan number[] biasa
               transition={{
                 duration: FLY_DURATION / 1000,
-                ease: [0.15, 0.5, 0.35, 1],
+                ease: [0.15, 0.5, 0.35, 1] as const,
               }}
             />
           )}
@@ -208,7 +210,8 @@ export function Navbar() {
                 className='absolute bottom-0 left-0 h-[2px] bg-primary w-0 group-hover:w-full'
                 initial={{ width: 0 }}
                 whileHover={{ width: '100%' }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
+                // PERBAIKAN 4: Kunci tipe 'easeOut'
+                transition={{ duration: 0.3, ease: 'easeOut' as const }}
               />
             </Link>
           ))}
