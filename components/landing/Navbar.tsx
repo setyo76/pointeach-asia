@@ -271,9 +271,10 @@ export function Navbar() {
           >
             <div className='px-6 py-6 flex flex-col gap-2'>
               {[
-                { href: '/features', label: 'Fitur' },
-                { href: '/pricing', label: 'Harga' },
-                { href: '/faq', label: 'FAQ' },
+                { href: '/#features', label: 'Fitur' },
+                { href: '/#pricing', label: 'Harga' },
+                { href: '/#testimonials', label: 'Testimoni' },
+                { href: '/#faq', label: 'FAQ' },
                 { href: '/contact', label: 'Kontak' },
               ].map((item) => (
                 <Link
