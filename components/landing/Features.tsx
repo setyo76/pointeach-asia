@@ -1,33 +1,10 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import { useLang } from '../../context/LanguageContext';
+import { content } from '../../lib/content';
 
-const features = [
-  {
-    title: 'Konten Pembelajaran AI',
-    description: 'Buat Modul Ajar, LKPD, Soal (PG, Essay, HOTS), dan bahan ajar lainnya dengan Gemini AI.',
-  },
-  {
-    title: 'Analisis & Evaluasi',
-    description: 'Kisi-kisi otomatis, analisis soal, distribusi Bloom Taxonomy, dan laporan hasil belajar.',
-  },
-  {
-    title: 'Administrasi Sekolah',
-    description: 'Renstra, program kerja, administrasi guru, dan dokumen kepala sekolah.',
-  },
-  {
-    title: 'Reward & Engagement',
-    description: 'Sistem poin, badge, leaderboard, dan umpan balik real-time untuk siswa.',
-  },
-  {
-    title: 'Integrasi Google Workspace',
-    description: 'Ekspor instan ke Docs, Sheets, Slides, Forms, dan NotebookLM.',
-  },
-  {
-    title: 'Branding Institusi',
-    description: 'Template dokumen profesional dengan logo sekolah dan identitas visual yang konsisten.',
-  },
-];
+// features will come from translations
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -48,6 +25,8 @@ const cardVariants = {
 };
 
 export function Features() {
+  const { lang } = useLang();
+  const t = content[lang];
   return (
     <section id='features' className='mx-auto max-w-7xl px-6 py-24'>
       <motion.div 
@@ -57,10 +36,10 @@ export function Features() {
         className='mb-12 text-center'
       >
         <p className='text-sm font-semibold uppercase tracking-[0.24em] text-accent'>
-          FITUR UTAMA
+          {t.featuresHeading}
         </p>
         <h2 className='mt-4 text-4xl font-semibold text-slate-900'>
-          Satu Platform, Banyak Solusi
+          {t.featuresTitle}
         </h2>
       </motion.div>
 
@@ -71,7 +50,7 @@ export function Features() {
         viewport={{ once: true, margin: "-80px" }}
         className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'
       >
-        {features.map((item, index) => (
+        {t.features.map((item, index) => (
           <motion.article
             key={index}
             variants={cardVariants}

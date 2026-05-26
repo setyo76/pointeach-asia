@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Navbar } from './../../components/landing/Navbar';
 import { Footer } from './../../components/landing/Footer';
+import { LanguageProvider } from '../../context/LanguageContext';
 
 export const metadata: Metadata = {
   title: 'PoinTeacher - Landing Page',
@@ -11,9 +12,11 @@ export const metadata: Metadata = {
 export default function MarketingLayout({ children }: { children: ReactNode }) {
   return (
     <div className='min-h-screen bg-background text-slate-900'>
+      <LanguageProvider>
       <Navbar />
       <main>{children}</main>
       <Footer />
+      </LanguageProvider>
     </div>
   );
 }

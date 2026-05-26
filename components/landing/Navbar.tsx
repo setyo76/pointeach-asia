@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Logo } from '../common/Logo';
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '../../context/LanguageContext';
+import { content } from '../../lib/content';
 
 // Partikel pecah saat mengenai logo
 function Shards({ x, y, active }: { x: number; y: number; active: boolean }) {
@@ -61,6 +63,9 @@ export function Navbar() {
     height: 0,
   });
   const [logoHit, setLogoHit] = useState({ x: 0, y: 0 });
+
+  const { lang } = useLang();
+  const t = content[lang];
 
   const btnRef = useRef<HTMLAnchorElement>(null);
   const headerRef = useRef<HTMLElement>(null);
@@ -194,11 +199,11 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <nav className='hidden md:flex items-center gap-8 text-sm'>
           {[
-            { href: '/#features', label: 'Fitur' },
-            { href: '/#pricing', label: 'Harga' },
-            { href: '/#testimonials', label: 'Testimoni' },
-            { href: '/#faq', label: 'FAQ' },
-            { href: '/#contact', label: 'Kontak' },
+            { href: '/#features', label: t.navFeatures },
+            { href: '/#pricing', label: t.navPricing },
+            { href: '/#testimonials', label: t.navTestimonials },
+            { href: '/#faq', label: t.navFaq },
+            { href: '/#contact', label: t.navContact },
           ].map((item) => (
             <Link
               key={item.href}
@@ -210,11 +215,12 @@ export function Navbar() {
                 className='absolute bottom-0 left-0 h-[2px] bg-primary w-0 group-hover:w-full'
                 initial={{ width: 0 }}
                 whileHover={{ width: '100%' }}
-                // PERBAIKAN 4: Kunci tipe 'easeOut'
                 transition={{ duration: 0.3, ease: 'easeOut' as const }}
               />
             </Link>
           ))}
+
+          <LangToggle />
 
           <Link
             ref={btnRef}
@@ -222,14 +228,14 @@ export function Navbar() {
             onMouseEnter={handleDashboardHover}
             className='relative overflow-hidden rounded-full bg-primary px-5 py-2.5 text-white font-medium hover:bg-primary/90 transition-all active:scale-95'
           >
-            Masuk Dashboard
+            {t.navDashboard}
           </Link>
         </nav>
 
         {/* Mobile Menu Button */}
         <div className='md:hidden'>
           <button
-            aria-label={open ? 'Tutup menu' : 'Buka menu'}
+            aria-label={open ? t.menuCloseLabel : t.menuOpenLabel}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             className='inline-flex h-10 w-10 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 transition-colors'
@@ -271,11 +277,11 @@ export function Navbar() {
           >
             <div className='px-6 py-6 flex flex-col gap-2'>
               {[
-                { href: '/#features', label: 'Fitur' },
-                { href: '/#pricing', label: 'Harga' },
-                { href: '/#testimonials', label: 'Testimoni' },
-                { href: '/#faq', label: 'FAQ' },
-                { href: '/contact', label: 'Kontak' },
+                { href: '/#features', label: t.navFeatures },
+                { href: '/#pricing', label: t.navPricing },
+                { href: '/#testimonials', label: t.navTestimonials },
+                { href: '/#faq', label: t.navFaq },
+                { href: '/contact', label: t.navContact },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -293,17 +299,44 @@ export function Navbar() {
                 </Link>
               ))}
 
+              <LangToggle />
+
               <Link
                 href='/dashboard'
                 onClick={() => setOpen(false)}
                 className='mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3.5 text-white font-medium hover:bg-primary/90 active:scale-[0.98] transition-all'
               >
-                Masuk Dashboard
+                {t.navDashboard}
               </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
+  );
+}
+
+export function LangToggle() {
+  const { lang, setLang } = useLang();
+
+  return (
+    <div className="flex items-center gap-1 rounded-full border border-slate-200 p-1 text-sm">
+      <button
+        onClick={() => setLang('id')}
+        className={`rounded-full px-3 py-1 transition ${
+          lang === 'id' ? 'bg-primary text-white' : 'text-slate-500 hover:text-slate-900'
+        }`}
+      >
+        ID
+      </button>
+      <button
+        onClick={() => setLang('en')}
+        className={`rounded-full px-3 py-1 transition ${
+          lang === 'en' ? 'bg-primary text-white' : 'text-slate-500 hover:text-slate-900'
+        }`}
+      >
+        EN
+      </button>
+    </div>
   );
 }

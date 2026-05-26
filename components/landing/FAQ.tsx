@@ -2,34 +2,8 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const faqs = [
-  {
-    question: 'Apakah PoinTeacher mendukung Google Workspace?',
-    answer:
-      'Ya, PoinTeacher terintegrasi penuh dengan Google Workspace. Anda dapat mengekspor dokumen langsung ke Google Docs, Sheets, Slides, Forms, dan NotebookLM.',
-  },
-  {
-    question: 'Bisakah saya menggunakan AI Gemini untuk membuat konten?',
-    answer:
-      'Ya, integrasi Gemini AI adalah fitur utama. Anda bisa membuat Modul Ajar, LKPD, Soal, dan dokumen administrasi dengan kualitas tinggi.',
-  },
-  {
-    question: 'Apakah mendukung Kurikulum Merdeka dan kurikulum internasional?',
-    answer:
-      'Ya, platform ini mendukung Kurikulum Merdeka, K13, Cambridge, dan IB. Anda dapat memilih konteks kurikulum saat membuat konten.',
-  },
-  {
-    question: 'Apakah ada fitur administrasi untuk Kepala Sekolah dan Yayasan?',
-    answer:
-      'Ya, tersedia fitur khusus untuk administrasi sekolah, renstra, program kerja, monitoring guru, dan custom branding institusi.',
-  },
-  {
-    question: 'Berapa batas penggunaan di paket gratis?',
-    answer:
-      'Paket Starter memungkinkan 50 generasi AI per bulan. Cocok untuk mencoba dan penggunaan skala kecil.',
-  },
-];
+import { useLang } from '../../context/LanguageContext';
+import { content } from '../../lib/content';
 
 // Pencil icon SVG - education themed
 function PencilIcon({ isOpen }: { isOpen: boolean }) {
@@ -79,7 +53,7 @@ function FAQItem({
   isOpen,
   onToggle,
 }: {
-  faq: (typeof faqs)[0];
+  faq: { question: string; answer: string };
   index: number;
   isOpen: boolean;
   onToggle: () => void;
@@ -191,6 +165,8 @@ function FAQItem({
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { lang } = useLang();
+  const t = content[lang];
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
@@ -216,36 +192,17 @@ export function FAQ() {
         </div>
 
         <h2 className="mt-2 text-4xl font-bold text-slate-900">
-          Pertanyaan yang Sering{' '}
-          <span className="relative inline-block">
-            Diajukan
-            {/* Underline squiggle */}
-            <svg
-              className="absolute -bottom-1 left-0 w-full"
-              height="6"
-              viewBox="0 0 100 6"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0 4 Q25 0 50 4 Q75 8 100 4"
-                stroke="#fbbf24"
-                strokeWidth="2.5"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>
+          {t.faqTitle}
         </h2>
 
         <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
-          Temukan jawaban untuk pertanyaan umum tentang{' '}
-          <strong className="text-slate-700 font-semibold">PoinTeacher</strong>
+          {t.faqSubtitle}
         </p>
       </motion.div>
 
       {/* FAQ list */}
       <div className="max-w-3xl mx-auto space-y-3">
-        {faqs.map((faq, index) => (
+        {t.faqs.map((faq, index) => (
           <FAQItem
             key={index}
             faq={faq}
@@ -263,9 +220,9 @@ export function FAQ() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.5 }}
       >
-        Masih ada pertanyaan?{' '}
+        {t.faqContactPrompt}{' '}
         <a href="#" className="font-medium text-amber-600 hover:text-amber-700 underline underline-offset-2">
-          Hubungi tim kami
+          {t.faqContactLabel}
         </a>
       </motion.p>
     </section>

@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '../../context/LanguageContext';
+import { content } from '../../lib/content';
 
 function WaveButton({
   href,
@@ -58,6 +60,8 @@ function WaveButton({
 
 export function CTA() {
   const [waves, setWaves] = useState<{ id: number; x: number; y: number }[]>([]);
+  const { lang } = useLang();
+  const t = content[lang];
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -92,25 +96,24 @@ export function CTA() {
         {/* Content — sits above waves via z-10 */}
         <div className='relative z-10 max-w-3xl mx-auto text-center'>
           <h2 className='text-4xl md:text-5xl font-semibold leading-tight'>
-            Siap Meningkatkan Kualitas Pendidikan Sekolah Anda?
+            {t.ctaTitle}
           </h2>
 
           <p className='mt-6 text-xl text-slate-100 leading-relaxed'>
-            PoinTeacher membantu guru lebih fokus mengajar, kepala sekolah lebih efektif memimpin,
-            dan yayasan lebih mudah menstandarisasi kualitas pendidikan.
+            {t.ctaDesc}
           </p>
 
           <div className='mt-10 flex flex-col sm:flex-row gap-4 justify-center'>
             <WaveButton href='/dashboard' variant='white' className='px-10 py-4 active:scale-95'>
-              Coba Gratis 14 Hari
+              {t.ctaPrimaryAlt ?? t.ctaPrimary}
             </WaveButton>
             <WaveButton href='/contact' variant='outline' className='px-10 py-4'>
-              Hubungi Tim Sales
+              {t.ctaSecondaryAlt ?? t.ctaSecondary}
             </WaveButton>
           </div>
 
           <p className='mt-6 text-sm text-slate-200'>
-            Tidak perlu kartu kredit • Langsung aktif setelah daftar
+            {t.ctaNote}
           </p>
         </div>
       </div>
