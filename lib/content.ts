@@ -30,6 +30,8 @@ export const content = {
     ctaNote: 'Tidak perlu kartu kredit • Langsung aktif setelah daftar',
 
     // Features
+    featuresHeading: 'FITUR UTAMA',
+    featuresTitle: 'Satu Platform, Banyak Solusi',
     features: [
       {
         title: 'Konten Pembelajaran AI',
@@ -56,10 +58,6 @@ export const content = {
         description: 'Template dokumen profesional dengan logo sekolah dan identitas visual yang konsisten.',
       },
     ],
-    featuresHeading: 'MAIN FEATURES',
-    featuresTitle: 'One Platform, Many Solutions',
-    featuresHeading: 'FITUR UTAMA',
-    featuresTitle: 'Satu Platform, Banyak Solusi',
 
     // FAQ
     faqTitle: 'Pertanyaan yang Sering Diajukan',
@@ -98,6 +96,8 @@ export const content = {
     pricingHeading: 'HARGA',
     pricingTitle: 'Pilih paket sesuai skala Anda',
     planPopular: 'Paling Populer',
+    planButtonSelect: 'Pilih Paket',
+    planButtonContact: 'Hubungi Kami',
     plans: [
       {
         name: 'Starter',
@@ -132,32 +132,27 @@ export const content = {
         waMessage: 'Halo, saya ingin mengetahui lebih lanjut tentang paket Yayasan PoinTeacher.',
       },
     ],
-    planButtonSelect: 'Pilih Paket',
-    planButtonContact: 'Hubungi Kami',
 
     // Testimonials
     testimonialsHeading: 'TESTIMONI',
     testimonialsTitle: 'Apa Kata Mereka yang Sudah Menggunakan PoinTeacher?',
     testimonials: [
       {
-        quote:
-          'Dulu butuh berjam-jam untuk membuat soal dan dokumen administrasi. Sekarang semuanya jauh lebih cepat dan profesional dengan branding sekolah.',
+        quote: 'Dulu butuh berjam-jam untuk membuat soal dan dokumen administrasi. Sekarang semuanya jauh lebih cepat dan profesional dengan branding sekolah.',
         name: 'Bu. Rina Sari',
         role: 'Guru Matematika SMA Negeri 5 Jakarta',
         image: '/images/Bu. Rina Sari.png',
         rating: 5,
       },
       {
-        quote:
-          'Sebagai kepala sekolah, saya sangat terbantu dengan fitur analisis dan administrasi. Semua dokumen jadi rapi dan mudah dimonitor.',
+        quote: 'Sebagai kepala sekolah, saya sangat terbantu dengan fitur analisis dan administrasi. Semua dokumen jadi rapi dan mudah dimonitor.',
         name: 'Drs. Ahmad Fauzi, M.Pd',
         role: 'Kepala SMP Islam Al-Azhar 1',
         image: '/images/Drs. Ahmad Fauzi, M.Pd.png',
         rating: 5,
       },
       {
-        quote:
-          'Integrasi Google Workspace dan AI sangat mulus. Seluruh guru di yayasan kami sekarang bekerja dalam satu ekosistem yang sama.',
+        quote: 'Integrasi Google Workspace dan AI sangat mulus. Seluruh guru di yayasan kami sekarang bekerja dalam satu ekosistem yang sama.',
         name: 'Dra. Siti Nurhaliza',
         role: 'Bendahara Yayasan Pendidikan XYZ',
         image: '/images/Dra. Siti Nurhaliza.png',
@@ -200,14 +195,16 @@ export const content = {
     menuCloseLabel: 'Close menu',
 
     // CTA
-    ctaTitle: 'Ready to Improve Your School’s Education Quality?',
+    ctaTitle: "Ready to Improve Your School's Education Quality?",
     ctaDesc:
       'PoinTeacher helps teachers focus on teaching, principals lead more effectively, and foundations standardize education quality easily.',
     ctaPrimaryAlt: 'Try 14 Days Free',
     ctaSecondaryAlt: 'Contact Sales Team',
-    ctaNote: "No credit card required • Active immediately after signup",
+    ctaNote: 'No credit card required • Active immediately after signup',
 
     // Features
+    featuresHeading: 'MAIN FEATURES',
+    featuresTitle: 'One Platform, Many Solutions',
     features: [
       {
         title: 'AI Learning Content',
@@ -262,7 +259,7 @@ export const content = {
           'Yes, there are dedicated features for school administration, strategic planning, teacher monitoring, and custom institutional branding.',
       },
       {
-        question: 'What are free plan limits?',
+        question: 'What are the free plan limits?',
         answer:
           'The Starter plan allows 50 AI generations per month. Suitable for trials and small usage.',
       },
@@ -272,6 +269,8 @@ export const content = {
     pricingHeading: 'PRICING',
     pricingTitle: 'Choose a plan that fits your scale',
     planPopular: 'Most Popular',
+    planButtonSelect: 'Choose Plan',
+    planButtonContact: 'Contact Us',
     plans: [
       {
         name: 'Starter',
@@ -306,32 +305,27 @@ export const content = {
         waMessage: 'Hello, I would like to know more about the PoinTeacher Foundation plan.',
       },
     ],
-    planButtonSelect: 'Choose Plan',
-    planButtonContact: 'Contact Us',
 
     // Testimonials
     testimonialsHeading: 'TESTIMONIALS',
     testimonialsTitle: 'What People Say About PoinTeacher',
     testimonials: [
       {
-        quote:
-          'It used to take hours to create assessments and admin documents. Now everything is faster and more professional with school branding.',
+        quote: 'It used to take hours to create assessments and admin documents. Now everything is faster and more professional with school branding.',
         name: 'Mrs. Rina Sari',
         role: 'Math Teacher, SMA Negeri 5 Jakarta',
         image: '/images/Bu. Rina Sari.png',
         rating: 5,
       },
       {
-        quote:
-          'As a principal, I am very helped by the analysis and administration features. All documents are neat and easy to monitor.',
+        quote: 'As a principal, I am very helped by the analysis and administration features. All documents are neat and easy to monitor.',
         name: 'Drs. Ahmad Fauzi, M.Pd',
         role: 'Principal, SMP Islam Al-Azhar 1',
         image: '/images/Drs. Ahmad Fauzi, M.Pd.png',
         rating: 5,
       },
       {
-        quote:
-          'Google Workspace and AI integration is seamless. All teachers in our foundation now work in the same ecosystem.',
+        quote: 'Google Workspace and AI integration is seamless. All teachers in our foundation now work in the same ecosystem.',
         name: 'Dra. Siti Nurhaliza',
         role: 'Treasurer, XYZ Education Foundation',
         image: '/images/Dra. Siti Nurhaliza.png',

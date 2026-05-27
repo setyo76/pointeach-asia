@@ -49,11 +49,11 @@ function WaveButton({
             initial={{ width: 0, height: 0, opacity: 0.8 }}
             animate={{ width: 500, height: 500, opacity: 0 }}
             exit={{}}
-            transition={{ duration: 0.65, ease: 'easeOut' }}
+            transition={{ duration: 0.65, ease: [0, 0, 0.2, 1] }}
           />
         ))}
       </AnimatePresence>
-      <span className="relative z-10">{children}</span>
+      <span className='relative z-10'>{children}</span>
     </motion.a>
   );
 }
@@ -83,17 +83,17 @@ export function CTA() {
           {waves.map(({ id, x, y }) => (
             <motion.span
               key={id}
-              className="absolute rounded-full pointer-events-none bg-white/10"
+              className='absolute rounded-full pointer-events-none bg-white/10'
               style={{ left: x, top: y, translateX: '-50%', translateY: '-50%' }}
               initial={{ width: 0, height: 0, opacity: 0.5 }}
               animate={{ width: 700, height: 700, opacity: 0 }}
               exit={{}}
-              transition={{ duration: 0.9, ease: 'easeOut' }}
+              transition={{ duration: 0.9, ease: [0, 0, 0.2, 1] }}
             />
           ))}
         </AnimatePresence>
 
-        {/* Content — sits above waves via z-10 */}
+        {/* Content */}
         <div className='relative z-10 max-w-3xl mx-auto text-center'>
           <h2 className='text-4xl md:text-5xl font-semibold leading-tight'>
             {t.ctaTitle}
@@ -105,10 +105,10 @@ export function CTA() {
 
           <div className='mt-10 flex flex-col sm:flex-row gap-4 justify-center'>
             <WaveButton href='/dashboard' variant='white' className='px-10 py-4 active:scale-95'>
-              {t.ctaPrimaryAlt ?? t.ctaPrimary}
+              {t.ctaPrimaryAlt}
             </WaveButton>
             <WaveButton href='/contact' variant='outline' className='px-10 py-4'>
-              {t.ctaSecondaryAlt ?? t.ctaSecondary}
+              {t.ctaSecondaryAlt}
             </WaveButton>
           </div>
 
