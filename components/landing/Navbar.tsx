@@ -287,7 +287,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className='group relative px-4 py-3 text-slate-700 hover:text-slate-900 rounded-xl hover:bg-slate-50 transition-all'
+                  className='group relative px-4 py-3 text-slate-700 hover:text-slate-900 rounded-xl hover:bg-slate-60 under transition-all'
                 >
                   {item.label}
                   <motion.span
